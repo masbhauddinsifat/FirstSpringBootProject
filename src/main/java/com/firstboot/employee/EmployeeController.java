@@ -41,7 +41,6 @@ public class EmployeeController {
 	public void deleteEmployeeById( @PathVariable String id) {
 		empService.deleteEmployeeById(id);
 	}
-//	@RequestBody Employee employee,, employee
-	
+
 	
 }
