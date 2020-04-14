@@ -6,82 +6,37 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * 
+ * @author Masbha Uddin Sifat
+ * @since 2019-10-10
+ *
+ */
+
 @Service
 public class EmployeeService {
+
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
-	public ArrayList<Employee> getEmployees(){
-		ArrayList<Employee> empList = new ArrayList<>();
-		employeeRepository.findAll().forEach(empList::add);
-		return empList;
-	}
 
-	public Employee getEmployeeById(String id) {
-		return employeeRepository.findById(id).get();
+	public ArrayList<Employee> getEmployees() {
+		return employeeRepository.getEmployees();
 	}
 	
-	public void addEmployee(Employee employee) {
-		employeeRepository.save(employee);
-//		return employee;
+	public Employee getEmployeeById(int empId) {
+		return employeeRepository.getEmployeeById(empId);
 	}
 	
-	public void updateEmployeeById(Employee employee) {
-		employeeRepository.save(employee);
+	public void addEmployee(Employee emp) {
+		employeeRepository.addEmployee(emp);
 	}
 	
-	public void deleteEmployeeById(String id) {
-		employeeRepository.deleteById(id);
+	public void updateEmployeeById(Employee emp) {
+		employeeRepository.updateEmployee(emp);
 	}
-//	private ArrayList<Employee> empList = new ArrayList<>(
-//			Arrays.asList(
-//			new Employee("001","masbha","full stack"),
-//			new Employee("002","samiul","full stack"),
-//			new Employee("003","ridoy","front stack"))
-//			);
-//
-//	public ArrayList<Employee> getEmployees(){
-//		return empList;
-//	}
-//	public Employee getEmployeeById(String id) {
-//		Employee employee = null;
-//		for (Employee emp : empList) {
-//			if (emp.getId().equalsIgnoreCase(id)) {
-//				employee = emp;
-//				break;
-//			}
-//
-//		}
-//		return employee;
-//	}
-//	
-//
-//	public Employee addEmployee(Employee employee) {
-//		empList.add(employee);
-//		return employee;
-//
-//	}
-//
-//	public void updateEmployeeById(String id, Employee employee) {
-//		for (int i = 0; i < empList.size(); i++) {
-//			if (empList.get(i).getId().equalsIgnoreCase(id)) {
-//				empList.set(i, employee);
-//				break;
-//			}
-//		}
-//
-//	}
-//	
-//	
-//
-//	public void deleteEmployeeById(String id, Employee employee) {
-//		for (int i = 0; i < empList.size(); i++) {
-//			if (empList.get(i).getId().equalsIgnoreCase(id)) {
-//				empList.remove(i);
-//				break;
-//			}
-//		}
-//
-//	}
 	
+	public void deleteEmployeeById(int empId) {
+		employeeRepository.deleteEmployee(empId);
+	}
 }

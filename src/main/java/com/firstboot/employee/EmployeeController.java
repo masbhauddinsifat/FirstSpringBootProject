@@ -10,20 +10,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 
+ * @author Masbha Uddin Sifat
+ * @since 2019-10-10
+ *
+ */
+
 @RestController
 public class EmployeeController {
 
 	@Autowired
 	private EmployeeService empService;
 
-	@RequestMapping("/employees")
+
+	@RequestMapping(method=RequestMethod.GET, value="/employees")
 	public ArrayList<Employee> getEmployees() {
 		return empService.getEmployees();
 	}
 
-	@RequestMapping("employees/{id}")
-	public Employee getEmployeeById(@PathVariable String id) {
-		return empService.getEmployeeById(id);
+	@RequestMapping(method=RequestMethod.GET, value="/employees/{empId}")
+	public Employee getEmployeeById(@PathVariable int empId) {
+		return empService.getEmployeeById(empId);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/employees")
@@ -31,15 +39,15 @@ public class EmployeeController {
 		empService.addEmployee(employee);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/employees/{id}")
+	@RequestMapping(method = RequestMethod.PUT, value = "/employees/{empId}")
 	public void updateEmployeeById(@RequestBody Employee employee) {
 		empService.updateEmployeeById(employee);
 	}
 
 	
-	@RequestMapping(method = RequestMethod.DELETE, value = "/employees/{id}")
-	public void deleteEmployeeById( @PathVariable String id) {
-		empService.deleteEmployeeById(id);
+	@RequestMapping(method = RequestMethod.DELETE, value = "/employees/{empId}")
+	public void deleteEmployeeById( @PathVariable int empId) {
+		empService.deleteEmployeeById(empId);
 	}
 
 	

@@ -2,21 +2,33 @@ package com.firstboot.employee;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+/**
+ * 
+ * @author Masbha Uddin Sifat
+ * @since 2019-10-10
+ */
 
 @Entity
 public class Employee {
+	
 	@Id
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
 	private String name;
-	@Column(name="dept")
+	
+	@Column(name = "dept")
 	private String department;
 
 	public Employee() {
 
 	}
 
-	public Employee(String id, String name, String department) {
+	public Employee(int id, String name, String department) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,7 +39,7 @@ public class Employee {
 		return department;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -39,7 +51,7 @@ public class Employee {
 		this.department = department;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -51,6 +63,5 @@ public class Employee {
 	public String toString() {
 		return "Employee [roll=" + id + ", name=" + name + ", department=" + department + "]";
 	}
-
 
 }

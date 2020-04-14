@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestFile {
 	
-	@RequestMapping("/testing")
+	@RequestMapping("/test")
 	public String test() {
 		return "test successful server is working";
 	}
